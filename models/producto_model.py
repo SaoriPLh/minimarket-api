@@ -7,7 +7,7 @@ class Producto(db.Model):
     #Luego declaramos los atributos
     id = db.Column(db.Integer,primary_key=True) #identificador unico de cada registro
     nombre = db.Column(db.String(100), nullable=False) #para q no este vacio
-    precio = db.Column(db.Double(10,2), nullable=False)
+    precio = db.Column(db.Float, nullable=False)
     image_url = db.Column(db.String(255), nullable=False) #para q no este vacio
     stock = db.Column(db.Integer,primary_key=True) 
     categoria = db.Column(db.String(50), nullable=False) 

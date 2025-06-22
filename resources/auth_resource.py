@@ -23,14 +23,16 @@ def register():
 @auth_page.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
+    print("DATA:", data)
+
     nombre_usuario = data.get("nombre_usuario")
     password = data.get("password")
 
     usuario = UsuarioRepo.find_by_username(nombre_usuario)
     if not usuario or not verify_password(password, usuario.password):
         return jsonify({"MensajeError": "Nombre de usuario o contraseña incorrecta"}), 400
-
-    access_token = create_access_token(identity=usuario.id)
+    #aca decimos este token que vamos a crear representa este usaurio que es de usuario.id exige un string identity es sub en el payload
+    access_token = create_access_token(identity=str(usuario.id))
     return jsonify(access_token=access_token), 200
 
 

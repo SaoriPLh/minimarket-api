@@ -1,0 +1,1 @@
+#payload es conjunto de claims, claims del jwt puede ser sub, exp, iat etc
